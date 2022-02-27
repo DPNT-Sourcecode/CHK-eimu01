@@ -55,7 +55,14 @@ def checkout(skus):
     # calculate free items value
     free = 0
     if 'E' in skuCounts:
-        free += items['E'] * (skuCounts['E'] // 2)
+        if skuCounts['E'] // 2 == 0:
+            
+            discounted += multiItems[sku][pos] * (skuCounts[sku] // n)
+            print('discounted: %s' % discounted)
+            skuCounts[sku] = skuCounts[sku] % n
+            
+            #free += items['E'] * (skuCounts['E'] // 2)
+    
     print('free: %s' % free)
     
     # adjust inventory for discounts
@@ -85,7 +92,7 @@ def checkout(skus):
     print('noDiscount: %s' % noDiscount)
     
     # finalise total
-    total = discounted + noDiscount + free
+    total = discounted + noDiscount #+ free
     
     return total
 
@@ -94,13 +101,14 @@ def checkout(skus):
 # - {"method":"checkout","params":["EEB"],"id":"CHK_R2_024"}, expected: 80, got: 150
 # - {"method":"checkout","params":["EEEB"],"id":"CHK_R2_025"}, expected: 120, got: 190
 
-a = checkout('EE')
-a
-#----------------
-#a = checkout("EEB")
+#a = checkout('EE')
 #a
+#----------------
+a = checkout("EEB")
+a
 #----------------
 #a = checkout("EEEB")
 #a
 #----------------
+
 
