@@ -87,9 +87,13 @@ if n >= 3:
     # adjust counts from the most expensive to the least to be nice
     for sku in decr:
         skuCount = skuCounts[sku]
-        if skuCount > n:
+        if n > skuCount:
+           skuCounts[sku] = 0
+           n -= skuCounts[sku]
+        else:
            skuCounts[sku] -= n
-           n = 0 
+           n = 0
+            
         
         if skuCounts[sku] < 0:
             skuCounts[sku] = 0
@@ -235,6 +239,7 @@ a
 #----------------
 #a = checkout("FFFFF")
 #a
+
 
 
 
