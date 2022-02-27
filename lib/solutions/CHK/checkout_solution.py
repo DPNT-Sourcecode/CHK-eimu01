@@ -78,10 +78,10 @@ special
 
 n = sum(special)
 if n >= 3:
-    n // 3
-    groupOffer
+    # group offer price
+    groupOffer = 45 * (n // 3)
     
-    
+    # adjust counts from the most expensive to the least to be nice
     skuCounts
     
     
@@ -219,6 +219,7 @@ a
 #----------------
 #a = checkout("FFFFF")
 #a
+
 
 
 
