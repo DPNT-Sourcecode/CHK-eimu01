@@ -55,7 +55,14 @@ for sku in items:
 skuCounts
 #{'A': 6, 'B': 4, 'C': 4, 'D': 3}
 
-if 'A' in 
+
+if 'A' in skuCounts:
+    skuCounts['A'] = skuCounts['A'] % 3
+    total = skuCounts['A'] // 3
+
+
+
+
 
 
 
