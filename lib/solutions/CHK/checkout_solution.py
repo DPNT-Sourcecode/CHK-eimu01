@@ -14,11 +14,13 @@ def checkout(skus):
         "C": 20,
         "D": 15}
     
-    if sku in skus:
-        if sku == "A":
-        elif sku == "B":
+    nSkus = len(skus)
+    
+    for sku in ['A', 'B', 'C', 'D']:
+        skuCounts[sku] = list(skus).count(sku)
     
     
     return out
+
 
 
