@@ -76,8 +76,9 @@ skuCounts
 special = [skuCounts.get(sku, 0) for sku in ['S', 'T', 'X', 'Y', 'Z']]
 special
 
-if sum(special) > 3:
-
+n= sum(special)
+if n >= 3:
+    n // 3
     groupOffer
     
     
@@ -155,12 +156,12 @@ def adjustForDiscounts(skuCounts, multiItems):
     return discounted, skuCounts
 
 def getRegular(skuCounts, items):
-    noDiscount = 0
+    regular = 0
     for sku, count in skuCounts.items():
-        noDiscount += skuCounts[sku] * items[sku]
-    print('noDiscount: %s' % noDiscount)
+        regular += skuCounts[sku] * items[sku]
+    print('regular: %s' % regular)
     
-    return noDiscount
+    return regular
 
 def checkout(skus):
     items = getItems()
@@ -218,6 +219,7 @@ a
 #----------------
 #a = checkout("FFFFF")
 #a
+
 
 
 
