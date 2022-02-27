@@ -21,19 +21,16 @@ def checkout(skus):
         return -1
     
     # check valid skus
-    if not isinstance(skus, str):
+    if set(skus) != set(items):
         return -1
     
-    
+    # build inventory
     skuCounts = {}
     for sku in items:
         skuCounts[sku] = list(skus).count(sku)
-
-    total = sum(skuCounts.values())
-
-    nSkus = len(skus)
-    if nSkus != total:
-        return -1
+    
+    # adjust inventory for disounts
+    
     
     
     return ret
@@ -47,18 +44,16 @@ items = {
     "C": 20,
     "D": 15}
 
-nSkus = len(skus)
+multiItems = {
+        'A': 130,
+        'B': 45}
 
 skuCounts = {}
 for sku in items:
     skuCounts[sku] = list(skus).count(sku)
 
-total = sum(skuCounts.values())
+skuCounts
+#{'A': 6, 'B': 4, 'C': 4, 'D': 3}
 
-if nSkus != total:
-    return -1
-
-
-{'A': 6, 'B': 4, 'C': 4, 'D': 3}
 
 
