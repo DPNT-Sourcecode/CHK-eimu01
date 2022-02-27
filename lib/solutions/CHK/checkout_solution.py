@@ -29,14 +29,14 @@ def checkout(skus):
     for sku in items:
         skuCounts[sku] = list(skus).count(sku)
     
-    # adjust inventory for disounts
+    # adjust inventory for discounts
     if 'A' in 
     
     
-    return ret
+    return total
 
 
-skus = "ABCDABCABCDAAABCDE"
+skus = "AABCDABCABCDAAABCDE"
 
 items = {
     "A": 50,
@@ -53,12 +53,16 @@ for sku in items:
     skuCounts[sku] = list(skus).count(sku)
 
 skuCounts
-#{'A': 6, 'B': 4, 'C': 4, 'D': 3}
+#{'A': 7, 'B': 4, 'C': 4, 'D': 3}
 
+total = 0
 
 if 'A' in skuCounts:
     skuCounts['A'] = skuCounts['A'] % 3
-    ret = skuCounts['A'] // 3
+    total = total + skuCounts['A'] // 3
+elif 'B' in skuCounts:
+    skuCounts['B'] = skuCounts['B'] % 2
+    total = skuCounts['B'] // 2
 
 
 
