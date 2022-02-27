@@ -32,14 +32,14 @@ def checkout(skus):
     # adjust inventory for discounts
     total = 0
     if 'A' in skuCounts:
-        total = total + (multiItems['A'] * (skuCounts['A'] // 3))
+        total +=  multiItems['A'] * (skuCounts['A'] // 3)
         skuCounts['A'] = skuCounts['A'] % 3
 
     if 'B' in skuCounts:
-        total = total + (multiItems['B'] * (skuCounts['B'] // 2))
+        total += multiItems['B'] * (skuCounts['B'] // 2)
         skuCounts['B'] = skuCounts['B'] % 2
     
-    
+    # finalise total
     
     
     return total
@@ -73,6 +73,9 @@ if 'B' in skuCounts:
     total = total + (multiItems['B'] * (skuCounts['B'] // 2))
     skuCounts['B'] = skuCounts['B'] % 2
 
+noDiscount = 0
+for sku, count in skuCounts.items():
+    total += skuCounts[sku] * items[sku]
 
 
 
