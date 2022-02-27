@@ -37,7 +37,8 @@ def checkout(skus):
         'B': 30,
         'C': 20,
         'D': 15,
-        'E': 40}
+        'E': 40,
+        'F': 10}
     
     multiItems = {
             'A': [0, 0, 130, 0, 200],
@@ -59,6 +60,15 @@ def checkout(skus):
             skuCounts['B'] -= offers
             if skuCounts['B'] < 0:
                 skuCounts['B'] = 0
+    print('skuCounts: %s' % skuCounts)
+    
+    if 'F' in skuCounts:
+        if skuCounts['F'] > 3:
+            offers = skuCounts['F'] // 2
+            if offers > 0:
+                skuCounts['F'] -= offers
+                if skuCounts['F'] < 0:
+                    skuCounts['F'] = 0
     print('skuCounts: %s' % skuCounts)
     
     # adjust inventory for discounts
@@ -106,6 +116,7 @@ def checkout(skus):
 #a = checkout("EEEB")
 #a
 #----------------
+
 
 
 
