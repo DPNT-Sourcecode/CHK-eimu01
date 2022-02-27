@@ -25,6 +25,16 @@ def getSkuCounts(skus, items):
     
     return skuCounts
 
+def adjustForOffers(skuCounts):
+
+
+
+
+
+
+    
+    return skuCounts
+
 def adjustForDiscounts(skuCounts, multiItems):
     discounted = 0
     for sku in multiItems:
@@ -86,7 +96,7 @@ def checkout(skus):
             'A': [0, 0, 130, 0, 200],  # 3A for 130, 5A for 200
             'B': [0, 45],  # 2B for 45
             'H': [0, 0, 0, 0, 45, 0, 0, 0, 0, 80],  # 5H for 45, 10H for 80
-            'K': [0, 150],  # 2K for 150
+            'K': [0, 120],  # 2K for 120
             'P': [0, 0, 0, 0, 200],  # 5P for 200
             'Q': [0, 0, 80], # 3Q for 80
             'V': [0, 90, 130]}  # 2V for 90, 3V for 130
@@ -99,6 +109,9 @@ def checkout(skus):
     # build inventory
     skuCounts = getSkuCounts(skus, items)
     print('skuCounts: %s' % skuCounts)
+    
+    # adjust inventory for offers
+    skuCounts = adjustForOffers(skuCounts)
     
     # deduct offers
     if 'E' in skuCounts:  # 2E get one B free
@@ -182,5 +195,6 @@ def checkout(skus):
 #----------------
 #a = checkout("FFFFF")
 #a
+
 
 
