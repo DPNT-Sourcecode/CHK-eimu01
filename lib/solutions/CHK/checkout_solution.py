@@ -7,12 +7,20 @@ def checkout(skus):
     3A 130
     2B 45
     """
-    
     items = {
         "A": 50,
         "B": 30,
         "C": 20,
         "D": 15}
+    multiItems = {
+            'A': 130,
+            'B': 45}
+    
+    if isinstance(skus, str):
+        
+    else:
+        return -1
+
     
     
     
@@ -22,7 +30,7 @@ def checkout(skus):
         skuCounts[sku] = list(skus).count(sku)
     
     
-    return out
+    return ret
 
 
 skus = "ABCDABCABCDAAABCDE"
@@ -42,7 +50,3 @@ for sku in ['A', 'B', 'C', 'D']:
     skuCounts[sku] = list(skus).count(sku)
 
 sum(skuCounts.values())
-
-
-
-
