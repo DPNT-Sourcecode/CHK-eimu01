@@ -3,10 +3,9 @@
 # noinspection PyUnusedLocal
 # skus = unicode string
 
-def passTests(skus, items):
+def getPassTests(skus, items):
     """Input tests"""
-    
-    passTest = False
+    passTest = True
     
     # check string
     if not isinstance(skus, str):
@@ -49,7 +48,7 @@ def checkout(skus):
     
     
     # check input integrity
-    passTests = passTests(skus, items)
+    passTests = getPassTests(skus, items)
     if not passTests:
         return -1
     
@@ -83,7 +82,30 @@ def checkout(skus):
     
     return total
 
+skus = 'AABCDABCABCDAAABCDE'
 
-checkout('AABCDABCABCDAAABCD')
+# checkout('AABCDABCABCDAAABCDE')
+items = {
+    'A': 50,
+    'B': 30,
+    'C': 20,
+    'D': 15,
+    'E': 40}
+
+# TODO: structure
+multiItems = {
+        'A': 130,
+        'B': 45}
+
+
+# check input integrity
+passTests = getPassTests(skus, items)
+if not passTests:
+    return -1
+
+# build inventory
+skuCounts = getSkuCounts(skus)
+print('skuCounts: %s' % skuCounts)
+
 
 
