@@ -53,9 +53,15 @@ def checkout(skus):
 
 
 """
-skus = "AABCDABCABCDAAABCDE"
+
+checkout("")
+checkout("AB")
 checkout("AABCDABCABCDAAABCDE")
 
+skus = ""
+skus = "A"
+skus = "B"
+skus = "AABCDABCABCDAAABCDE"
 
 items = {
     "A": 50,
@@ -87,3 +93,4 @@ noDiscount = 0
 for sku, count in skuCounts.items():
     noDiscount += skuCounts[sku] * items[sku]
 """
+
