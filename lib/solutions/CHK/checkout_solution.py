@@ -63,17 +63,14 @@ def checkout(skus):
     discounted = 0
     if 'A' in skuCounts:
         for i in range(len(multiItems)):
-            pos = -i
+            print('i: %s' % i)
+            
+            pos = len(multiItems) - i + 1
+            print('pos: %s' % pos)
+            
             if multiItems[pos] > 0:
-                skuCounts['A'] // pos
-            
-            
-            
-            discounted +=  multiItems['A'] * (skuCounts['A'] // 3)
-            skuCounts['A'] = skuCounts['A'] % 3
-    
-    
-    
+                discounted += multiItems['A'] * (skuCounts['A'] // (pos + 1))
+                skuCounts['A'] = skuCounts['A'] % (pos + 1)
     print('discounted: %s' % discounted)
     
     if 'B' in skuCounts:
@@ -93,6 +90,7 @@ def checkout(skus):
     return total
 
 checkout('AABCDABCABCDAAABCDEEE')
+
 
 
 
