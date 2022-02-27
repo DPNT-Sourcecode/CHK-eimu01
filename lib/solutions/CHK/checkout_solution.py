@@ -86,7 +86,7 @@ if n >= 3:
     
     # adjust counts from the most expensive to the least to be nice
     for sku in decr:
-        print('skuCounts: %s' % skuCounts)
+        print('sku: %s n: %s' % (sku, str(n)))
         skuCount = skuCounts[sku]
         
         if n > skuCount:
@@ -95,10 +95,12 @@ if n >= 3:
         else:
            skuCounts[sku] -= n
            n = 0
+        print('skuCounts: %s' % skuCounts)
         
-        if n == 0:
+        if n < 1:
             break
-print('skuCounts: %s' % skuCounts)
+
+skuCounts
 
 
 
@@ -242,6 +244,7 @@ a
 #----------------
 #a = checkout("FFFFF")
 #a
+
 
 
 
