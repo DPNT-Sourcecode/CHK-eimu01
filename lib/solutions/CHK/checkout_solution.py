@@ -158,12 +158,12 @@ def checkout(skus):
     return total
 
 
-# - {"method":"checkout","params":["EE"],"id":"CHK_R2_023"}, expected: 80, got: 120
-# - {"method":"checkout","params":["EEB"],"id":"CHK_R2_024"}, expected: 80, got: 150
-# - {"method":"checkout","params":["EEEB"],"id":"CHK_R2_025"}, expected: 120, got: 190
+#Result is: FAILED
+#Some requests have failed (1/141). Here are some of them:
+# - {"method":"checkout","params":["UUU"],"id":"CHK_R4_054"}, expected: 120, got: 80
 
-#a = checkout('EE')
-#a
+a = checkout('UUU')
+a
 #----------------
 #a = checkout("EEB")
 #a
@@ -182,6 +182,7 @@ def checkout(skus):
 #----------------
 #a = checkout("FFFFF")
 #a
+
 
 
 
