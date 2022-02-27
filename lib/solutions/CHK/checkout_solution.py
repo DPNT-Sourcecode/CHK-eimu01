@@ -1,7 +1,48 @@
-
-
 # noinspection PyUnusedLocal
 # skus = unicode string
+
+def getItems():
+    items = {
+        'A': 50,
+        'B': 30,
+        'C': 20,
+        'D': 15,
+        'E': 40,
+        'F': 10,
+        'G': 20,
+        'H': 10,
+        'I': 35,
+        'J': 60,
+        'K': 70,
+        'L': 90,
+        'M': 15,
+        'N': 40,
+        'O': 10,
+        'P': 50,
+        'Q': 30,
+        'R': 50,
+        'S': 20,
+        'T': 20,
+        'U': 40,
+        'V': 50,
+        'W': 20,
+        'X': 17,
+        'Y': 20,
+        'Z': 21}
+    
+    return items
+
+def getMultiItems():
+    multiItems = {
+            'A': [0, 0, 130, 0, 200],  # 3A for 130, 5A for 200
+            'B': [0, 45],  # 2B for 45
+            'H': [0, 0, 0, 0, 45, 0, 0, 0, 0, 80],  # 5H for 45, 10H for 80
+            'K': [0, 120],  # 2K for 120
+            'P': [0, 0, 0, 0, 200],  # 5P for 200
+            'Q': [0, 0, 80], # 3Q for 80
+            'V': [0, 90, 130]}  # 2V for 90, 3V for 130
+    
+    return multiItems
 
 def getPassTests(skus, items):
     """Input tests"""
@@ -99,44 +140,9 @@ def getNoDiscounts(skuCounts, items):
     
     return noDiscount
 
-
 def checkout(skus):
-    items = {
-        'A': 50,
-        'B': 30,
-        'C': 20,
-        'D': 15,
-        'E': 40,
-        'F': 10,
-        'G': 20,
-        'H': 10,
-        'I': 35,
-        'J': 60,
-        'K': 70,
-        'L': 90,
-        'M': 15,
-        'N': 40,
-        'O': 10,
-        'P': 50,
-        'Q': 30,
-        'R': 50,
-        'S': 20,
-        'T': 20,
-        'U': 40,
-        'V': 50,
-        'W': 20,
-        'X': 17,
-        'Y': 20,
-        'Z': 21}
-    
-    multiItems = {
-            'A': [0, 0, 130, 0, 200],  # 3A for 130, 5A for 200
-            'B': [0, 45],  # 2B for 45
-            'H': [0, 0, 0, 0, 45, 0, 0, 0, 0, 80],  # 5H for 45, 10H for 80
-            'K': [0, 120],  # 2K for 120
-            'P': [0, 0, 0, 0, 200],  # 5P for 200
-            'Q': [0, 0, 80], # 3Q for 80
-            'V': [0, 90, 130]}  # 2V for 90, 3V for 130
+    items = getItems()
+    multiItems =  getMultiItems()
     
     # check input integrity
     passTests = getPassTests(skus, items)
@@ -167,8 +173,8 @@ def checkout(skus):
 #Some requests have failed (1/141). Here are some of them:
 # - {"method":"checkout","params":["UUU"],"id":"CHK_R4_054"}, expected: 120, got: 80
 
-#a = checkout('UUU')
-#a
+a = checkout('UUU')
+a
 #----------------
 #a = checkout("EEB")
 #a
@@ -187,6 +193,7 @@ def checkout(skus):
 #----------------
 #a = checkout("FFFFF")
 #a
+
 
 
 

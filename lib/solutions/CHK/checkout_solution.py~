@@ -1,69 +1,7 @@
-
-
 # noinspection PyUnusedLocal
 # skus = unicode string
 
-def getPassTests(skus, items):
-    """Input tests"""
-    passTest = True
-    
-    # check string
-    if not isinstance(skus, str):
-        passTest = False
-    
-    # check valid skus
-    if not set(skus).issubset(items):
-        passTest = False
-    
-    return passTest
-
-def getSkuCounts(skus, items):
-    """Build inventory dictionary"""
-    skuCounts = {}
-    for sku in items:
-        skuCounts[sku] = list(skus).count(sku)
-    
-    return skuCounts
-
-def adjustForOffers(skuCounts):
-
-
-
-
-
-
-    
-    return skuCounts
-
-def adjustForDiscounts(skuCounts, multiItems):
-    discounted = 0
-    for sku in multiItems:
-        print('sku: %s' % sku)
-        if sku in skuCounts:
-            offers= multiItems[sku]
-            print('offers: %s' % offers)
-            for i in range(len(offers)):
-                print('i: %s' % i)
-                n = len(offers) - i
-                pos = n - 1
-                if multiItems[sku][pos] > 0:
-                    discounted += multiItems[sku][pos] * (skuCounts[sku] // n)
-                    print('discounted: %s' % discounted)
-                    skuCounts[sku] = skuCounts[sku] % n
-                    print('skuCounts: %s' % skuCounts)
-    
-    return discounted, skuCounts
-
-def getNoDiscounts(skuCounts, items):
-    noDiscount = 0
-    for sku, count in skuCounts.items():
-        noDiscount += skuCounts[sku] * items[sku]
-    print('noDiscount: %s' % noDiscount)
-    
-    return noDiscount
-
-
-def checkout(skus):
+def getItems():
     items = {
         'A': 50,
         'B': 30,
@@ -92,6 +30,9 @@ def checkout(skus):
         'Y': 20,
         'Z': 21}
     
+    return items
+
+def getMultiItems():
     multiItems = {
             'A': [0, 0, 130, 0, 200],  # 3A for 130, 5A for 200
             'B': [0, 45],  # 2B for 45
@@ -101,19 +42,31 @@ def checkout(skus):
             'Q': [0, 0, 80], # 3Q for 80
             'V': [0, 90, 130]}  # 2V for 90, 3V for 130
     
-    # check input integrity
-    passTests = getPassTests(skus, items)
-    if not passTests:
-        return -1
+    return multiItems
+
+def getPassTests(skus, items):
+    """Input tests"""
+    passTest = True
     
-    # build inventory
-    skuCounts = getSkuCounts(skus, items)
-    print('skuCounts: %s' % skuCounts)
+    # check string
+    if not isinstance(skus, str):
+        passTest = False
     
-    # adjust inventory for offers
-    skuCounts = adjustForOffers(skuCounts)
+    # check valid skus
+    if not set(skus).issubset(items):
+        passTest = False
     
-    # deduct offers
+    return passTest
+
+def getSkuCounts(skus, items):
+    """Build inventory dictionary"""
+    skuCounts = {}
+    for sku in items:
+        skuCounts[sku] = list(skus).count(sku)
+    
+    return skuCounts
+
+def adjustForOffers(skuCounts):
     if 'E' in skuCounts:  # 2E get one B free
         offers = skuCounts['E'] // 2
         if offers > 0:
@@ -158,6 +111,51 @@ def checkout(skus):
                     skuCounts['U'] = 0
     print('U skuCounts: %s' % skuCounts)
     
+    return skuCounts
+
+def adjustForDiscounts(skuCounts, multiItems):
+    discounted = 0
+    for sku in multiItems:
+        print('sku: %s' % sku)
+        if sku in skuCounts:
+            offers= multiItems[sku]
+            print('offers: %s' % offers)
+            for i in range(len(offers)):
+                print('i: %s' % i)
+                n = len(offers) - i
+                pos = n - 1
+                if multiItems[sku][pos] > 0:
+                    discounted += multiItems[sku][pos] * (skuCounts[sku] // n)
+                    print('discounted: %s' % discounted)
+                    skuCounts[sku] = skuCounts[sku] % n
+                    print('skuCounts: %s' % skuCounts)
+    
+    return discounted, skuCounts
+
+def getNoDiscounts(skuCounts, items):
+    noDiscount = 0
+    for sku, count in skuCounts.items():
+        noDiscount += skuCounts[sku] * items[sku]
+    print('noDiscount: %s' % noDiscount)
+    
+    return noDiscount
+
+def checkout(skus):
+    items = getItems()
+    multiItems =  getMultiItems()
+    
+    # check input integrity
+    passTests = getPassTests(skus, items)
+    if not passTests:
+        return -1
+    
+    # build inventory
+    skuCounts = getSkuCounts(skus, items)
+    print('skuCounts: %s' % skuCounts)
+    
+    # adjust inventory for offers
+    skuCounts = adjustForOffers(skuCounts)
+    
     # adjust inventory for discounts
     discounted, skuCounts = adjustForDiscounts(skuCounts, multiItems)
     
@@ -175,8 +173,8 @@ def checkout(skus):
 #Some requests have failed (1/141). Here are some of them:
 # - {"method":"checkout","params":["UUU"],"id":"CHK_R4_054"}, expected: 120, got: 80
 
-#a = checkout('UUU')
-#a
+a = checkout('UUU')
+a
 #----------------
 #a = checkout("EEB")
 #a
@@ -195,6 +193,7 @@ def checkout(skus):
 #----------------
 #a = checkout("FFFFF")
 #a
+
 
 
 
