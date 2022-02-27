@@ -4,6 +4,8 @@
 # skus = unicode string
 
 def passTests(skus, items):
+    """Input tests"""
+    
     passTest = False
     
     # check string
@@ -15,6 +17,14 @@ def passTests(skus, items):
         passTest = False
     
     return passTest
+
+def getSkuCounts(skus)
+    """Build inventory dictionary"""
+    skuCounts = {}
+    for sku in items:
+        skuCounts[sku] = list(skus).count(sku)
+    
+    return skuCounts
 
 def checkout(skus):
     """
@@ -30,6 +40,7 @@ def checkout(skus):
         'D': 15,
         'E': 40}
     
+    # TODO: structure
     multiItems = {
             'A': 130,
             'B': 45}
@@ -37,15 +48,17 @@ def checkout(skus):
     
     
     
-    
-    
+    # check input integrity
+    passTests = passTests(skus, items)
     if not passTests:
         return -1
     
     # build inventory
-    skuCounts = {}
-    for sku in items:
-        skuCounts[sku] = list(skus).count(sku)
+    skuCounts = getSkuCounts(skus)
+    
+    
+    
+    
     
     # adjust inventory for discounts
     total = 0
@@ -66,10 +79,4 @@ def checkout(skus):
     total += noDiscount
     
     return total
-
-
-
-
-
-
 
