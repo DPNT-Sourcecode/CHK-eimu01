@@ -25,7 +25,7 @@ def getSkuCounts(skus, items):
     
     return skuCounts
 
-def adjustForDiscounts():
+def adjustForDiscounts(skuCounts, multiItems):
     discounted = 0
     for sku in multiItems:
         print('sku: %s' % sku)
@@ -83,8 +83,10 @@ def checkout(skus):
         'Z': 50}
     
     multiItems = {
-            'A': [0, 0, 130, 0, 200],
-            'B': [0, 45]}
+            'A': [0, 0, 130, 0, 200],  # 3A for 130, 5A for 200
+            'B': [0, 45],  # 2B for 45
+            'H': [0, 0, 0, 0, 45, 0, 0, 0, 0, 80] # 5H for 45, 10H for 80
+            }
     
     # check input integrity
     passTests = getPassTests(skus, items)
@@ -96,7 +98,7 @@ def checkout(skus):
     print('skuCounts: %s' % skuCounts)
     
     # deduct offers
-    if 'E' in skuCounts:
+    if 'E' in skuCounts:  # 2E get one B free
         offers = skuCounts['E'] // 2
         if offers > 0:
             skuCounts['B'] -= offers
@@ -104,7 +106,7 @@ def checkout(skus):
                 skuCounts['B'] = 0
     print('E skuCounts: %s' % skuCounts)
     
-    if 'F' in skuCounts:
+    if 'F' in skuCounts:  # 2F get one F free
         if skuCounts['F'] >= 3:
             offers = skuCounts['F'] // 3
             if offers > 0:
@@ -112,6 +114,8 @@ def checkout(skus):
                 if skuCounts['F'] < 0:
                     skuCounts['F'] = 0
     print('F skuCounts: %s' % skuCounts)
+    
+    
     
     # adjust inventory for discounts
     discounted, skuCounts = adjustForDiscounts(skuCounts, multiItems)
@@ -148,8 +152,9 @@ def checkout(skus):
 #a = checkout("FFF")
 #a
 #----------------
-#a = checkout("FFFFF")
-#a
+a = checkout("FFFFF")
+a
+
 
 
 
