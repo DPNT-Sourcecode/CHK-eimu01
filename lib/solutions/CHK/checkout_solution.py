@@ -17,7 +17,7 @@ def getPassTests(skus, items):
     
     return passTest
 
-def getSkuCounts(skus):
+def getSkuCounts(skus, items):
     """Build inventory dictionary"""
     skuCounts = {}
     for sku in items:
@@ -53,11 +53,12 @@ def checkout(skus):
         return -1
     
     # build inventory
-    skuCounts = getSkuCounts(skus)
+    skuCounts = getSkuCounts(skus, items)
     print('skuCounts: %s' % skuCounts)
     
     
     
+    # adjust inventory for free items
     
     
     # adjust inventory for discounts
@@ -82,30 +83,8 @@ def checkout(skus):
     
     return total
 
-skus = 'AABCDABCABCDAAABCDE'
 checkout('AABCDABCABCDAAABCDE')
 
-items = {
-    'A': 50,
-    'B': 30,
-    'C': 20,
-    'D': 15,
-    'E': 40}
-
-# TODO: structure
-multiItems = {
-        'A': 130,
-        'B': 45}
-
-
-# check input integrity
-passTests = getPassTests(skus, items)
-if not passTests:
-    return -1
-
-# build inventory
-skuCounts = getSkuCounts(skus)
-print('skuCounts: %s' % skuCounts)
 
 
 
