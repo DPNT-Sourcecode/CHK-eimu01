@@ -52,14 +52,11 @@ def checkout(skus):
     skuCounts = getSkuCounts(skus, items)
     print('skuCounts: %s' % skuCounts)
     
-    # calculate free items value
-    free = 0
+    # deduct offers
     if 'E' in skuCounts:
-        if skuCounts['E'] // 2 == 0:
-            
-            discounted += multiItems[sku][pos] * (skuCounts[sku] // n)
-            print('discounted: %s' % discounted)
-            skuCounts[sku] = skuCounts[sku] % n
+        offers = skuCounts['E'] // 2
+        if offers > 0:
+            skuCounts[sku] = skuCounts['B'] - offers
             
             #free += items['E'] * (skuCounts['E'] // 2)
     
@@ -92,7 +89,7 @@ def checkout(skus):
     print('noDiscount: %s' % noDiscount)
     
     # finalise total
-    total = discounted + noDiscount #+ free
+    total = discounted + noDiscount
     
     return total
 
@@ -110,5 +107,6 @@ a
 #a = checkout("EEEB")
 #a
 #----------------
+
 
 
