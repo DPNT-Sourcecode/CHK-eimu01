@@ -14,9 +14,11 @@ def checkout(skus):
         "C": 20,
         "D": 15}
     
-    
-    
+    if sku in skus:
+        if sku == "A":
+        elif sku == "B":
     
     
     return out
+
 

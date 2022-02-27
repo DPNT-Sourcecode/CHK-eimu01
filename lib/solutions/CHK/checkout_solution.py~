@@ -8,16 +8,15 @@ def checkout(skus):
     2B 45
     """
     
-    
-    
     items = {
         "A": 50,
         "B": 30,
         "C": 20,
         "D": 15}
     
-    
+    if skus == "A":
     
     
     
     return out
+
