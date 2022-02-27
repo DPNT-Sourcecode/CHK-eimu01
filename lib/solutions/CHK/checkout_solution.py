@@ -30,7 +30,7 @@ def checkout(skus):
         skuCounts[sku] = list(skus).count(sku)
     
     # adjust inventory for disounts
-    
+    if 'A' in 
     
     
     return ret
@@ -54,6 +54,11 @@ for sku in items:
 
 skuCounts
 #{'A': 6, 'B': 4, 'C': 4, 'D': 3}
+
+if 'A' in skuCounts:
+    
+
+
 
 
 
