@@ -73,13 +73,12 @@ def adjustForGroupOffers(skuCounts):
 skuCounts = {'S': 1, 'T': 1, 'X': 1, 'Y': 1, 'Z': 1}
 skuCounts
 
-special = [skuCounts.get('sku', 0) for sku in ['S', 'T', 'X', 'Y', 'Z']]
+special = [skuCounts.get(sku, 0) for sku in ['S', 'T', 'X', 'Y', 'Z']]
 special
 
 if sum(special) > 3:
 
-
-
+    groupOffer
     
     
     skuCounts
@@ -87,7 +86,7 @@ if sum(special) > 3:
     
     
     
-    return skuCounts
+    return groupOffer, skuCounts
 
 def adjustForOffers(skuCounts):
     if 'E' in skuCounts:  # 2E get one B free
@@ -155,7 +154,7 @@ def adjustForDiscounts(skuCounts, multiItems):
     
     return discounted, skuCounts
 
-def getNoDiscounts(skuCounts, items):
+def getRegular(skuCounts, items):
     noDiscount = 0
     for sku, count in skuCounts.items():
         noDiscount += skuCounts[sku] * items[sku]
@@ -177,7 +176,7 @@ def checkout(skus):
     print('skuCounts: %s' % skuCounts)
     
     # adjust inventory for group offers
-    skuCounts = adjustForGroupOffers(skuCounts)
+    groupOffer, skuCounts = adjustForGroupOffers(skuCounts)
     
     # adjust inventory for offers
     skuCounts = adjustForOffers(skuCounts)
@@ -186,10 +185,10 @@ def checkout(skus):
     discounted, skuCounts = adjustForDiscounts(skuCounts, multiItems)
     
     # no discounts total
-    noDiscount = getNoDiscounts(skuCounts, items)
+    regular = getRegular(skuCounts, items)
     
     # finalise total
-    total = discounted + noDiscount
+    total = groupOffer + discounted + regular
     
 #    return('done')
     return total
@@ -219,6 +218,7 @@ a
 #----------------
 #a = checkout("FFFFF")
 #a
+
 
 
 
