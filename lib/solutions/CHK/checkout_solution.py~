@@ -85,8 +85,11 @@ def checkout(skus):
     multiItems = {
             'A': [0, 0, 130, 0, 200],  # 3A for 130, 5A for 200
             'B': [0, 45],  # 2B for 45
-            'H': [0, 0, 0, 0, 45, 0, 0, 0, 0, 80] # 5H for 45, 10H for 80
-            }
+            'H': [0, 0, 0, 0, 45, 0, 0, 0, 0, 80],  # 5H for 45, 10H for 80
+            'K': [0, 150],  # 2K for 150
+            'P': [0, 0, 0, 0, 200],  # 5P for 200
+            'Q': [0, 0, 80], # 3Q for 80
+            'V': [0, 90, 130]}  # 2V for 90, 3V for 130
     
     # check input integrity
     passTests = getPassTests(skus, items)
@@ -114,6 +117,28 @@ def checkout(skus):
                 if skuCounts['F'] < 0:
                     skuCounts['F'] = 0
     print('F skuCounts: %s' % skuCounts)
+    
+    if 'F' in skuCounts:  # 2F get one F free
+        if skuCounts['F'] >= 3:
+            offers = skuCounts['F'] // 3
+            if offers > 0:
+                skuCounts['F'] -= offers
+                if skuCounts['F'] < 0:
+                    skuCounts['F'] = 0
+    print('F skuCounts: %s' % skuCounts)
+
+    # TODO
+    # 3N get one M free 
+    # 3R get one Q free
+    # 3U get one U free
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -154,6 +179,7 @@ def checkout(skus):
 #----------------
 a = checkout("FFFFF")
 a
+
 
 
 
