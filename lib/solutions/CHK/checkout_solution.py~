@@ -25,6 +25,25 @@ def getSkuCounts(skus, items):
     
     return skuCounts
 
+def adjustForDiscounts():
+    discounted = 0
+    for sku in multiItems:
+        print('sku: %s' % sku)
+        if sku in skuCounts:
+            offers= multiItems[sku]
+            print('offers: %s' % offers)
+            for i in range(len(offers)):
+                print('i: %s' % i)
+                n = len(offers) - i
+                pos = n - 1
+                if multiItems[sku][pos] > 0:
+                    discounted += multiItems[sku][pos] * (skuCounts[sku] // n)
+                    print('discounted: %s' % discounted)
+                    skuCounts[sku] = skuCounts[sku] % n
+                    print('skuCounts: %s' % skuCounts)
+    
+    return discounted, skuCounts
+
 def checkout(skus):
     items = {
         'A': 50,
@@ -86,24 +105,8 @@ def checkout(skus):
     print('F skuCounts: %s' % skuCounts)
     
     # adjust inventory for discounts
-    discounted = 0
+    discounted, skuCounts = adjustForDiscounts(skuCounts, multiItems)
     
-    for sku in multiItems:
-        print('sku: %s' % sku)
-        if sku in skuCounts:
-            offers= multiItems[sku]
-            print('offers: %s' % offers)
-            for i in range(len(offers)):
-                print('i: %s' % i)
-                n = len(offers) - i
-                pos = n - 1
-                if multiItems[sku][pos] > 0:
-                    discounted += multiItems[sku][pos] * (skuCounts[sku] // n)
-                    print('discounted: %s' % discounted)
-                    skuCounts[sku] = skuCounts[sku] % n
-                    print('skuCounts: %s' % skuCounts)
-    
-#    return('done')
     
     # no discounts total
     noDiscount = 0
@@ -114,6 +117,7 @@ def checkout(skus):
     # finalise total
     total = discounted + noDiscount
     
+#    return('done')
     return total
 
 
@@ -141,5 +145,6 @@ def checkout(skus):
 #----------------
 #a = checkout("FFFFF")
 #a
+
 
 
