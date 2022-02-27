@@ -69,6 +69,11 @@ def getSkuCounts(skus, items):
 
 def adjustForGroupOffers(skuCounts):
     
+    special = [skuCounts.get('sku', 0) for sku in ['S', 'T', 'X', 'Y', 'Z']]
+    if sum(special) > 3:
+    
+    
+    
     skuCounts
     
     
@@ -206,6 +211,7 @@ a
 #----------------
 #a = checkout("FFFFF")
 #a
+
 
 
 
