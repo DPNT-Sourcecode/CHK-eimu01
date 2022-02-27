@@ -64,7 +64,7 @@ def checkout(skus):
     
     if 'F' in skuCounts:
         if skuCounts['F'] >= 3:
-            offers = skuCounts['F'] // 2
+            offers = skuCounts['F'] // 3
             if offers > 0:
                 skuCounts['F'] -= offers
                 if skuCounts['F'] < 0:
@@ -125,8 +125,9 @@ def checkout(skus):
 #a = checkout("FFF")
 #a
 #----------------
-a = checkout("FFFFF")
-a
+#a = checkout("FFFFF")
+#a
+
 
 
 
