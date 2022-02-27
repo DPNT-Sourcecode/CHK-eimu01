@@ -118,29 +118,32 @@ def checkout(skus):
                     skuCounts['F'] = 0
     print('F skuCounts: %s' % skuCounts)
     
-    if 'F' in skuCounts:  # 2F get one F free
-        if skuCounts['F'] >= 3:
-            offers = skuCounts['F'] // 3
+    if 'N' in skuCounts:  # 3N get one M free
+        if skuCounts['N'] >= 3:
+            offers = skuCounts['N'] // 3
             if offers > 0:
-                skuCounts['F'] -= offers
-                if skuCounts['F'] < 0:
-                    skuCounts['F'] = 0
-    print('F skuCounts: %s' % skuCounts)
+                skuCounts['M'] -= offers
+                if skuCounts['M'] < 0:
+                    skuCounts['M'] = 0
+    print('N skuCounts: %s' % skuCounts)
     
-    # TODO
-    # 3N get one M free 
-    # 3R get one Q free
-    # 3U get one U free
+    if 'R' in skuCounts:  # 3R get one Q free
+        if skuCounts['R'] >= 3:
+            offers = skuCounts['R'] // 3
+            if offers > 0:
+                skuCounts['Q'] -= offers
+                if skuCounts['Q'] < 0:
+                    skuCounts['Q'] = 0
+    print('R skuCounts: %s' % skuCounts)
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    if 'U' in skuCounts:  # 3U get one U free
+        if skuCounts['U'] >= 3:
+            offers = skuCounts['U'] // 3
+            if offers > 0:
+                skuCounts['U'] -= offers
+                if skuCounts['U'] < 0:
+                    skuCounts['U'] = 0
+    print('U skuCounts: %s' % skuCounts)
     
     # adjust inventory for discounts
     discounted, skuCounts = adjustForDiscounts(skuCounts, multiItems)
@@ -177,8 +180,9 @@ def checkout(skus):
 #a = checkout("FFF")
 #a
 #----------------
-a = checkout("FFFFF")
-a
+#a = checkout("FFFFF")
+#a
+
 
 
 
