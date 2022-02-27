@@ -183,11 +183,3 @@ def checkout(skus):
 #a = checkout("FFFFF")
 #a
 
-
-
-
-
-
-
-
-
