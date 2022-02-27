@@ -66,6 +66,16 @@ def getSkuCounts(skus, items):
     
     return skuCounts
 
+
+def adjustForGroupOffers(skuCounts):
+    
+    skuCounts
+    
+    
+    
+    
+    return skuCounts
+
 def adjustForOffers(skuCounts):
     if 'E' in skuCounts:  # 2E get one B free
         offers = skuCounts['E'] // 2
@@ -153,6 +163,9 @@ def checkout(skus):
     skuCounts = getSkuCounts(skus, items)
     print('skuCounts: %s' % skuCounts)
     
+    # adjust inventory for group offers
+    skuCounts = adjustForGroupOffers(skuCounts)
+    
     # adjust inventory for offers
     skuCounts = adjustForOffers(skuCounts)
     
@@ -193,6 +206,7 @@ a
 #----------------
 #a = checkout("FFFFF")
 #a
+
 
 
 
