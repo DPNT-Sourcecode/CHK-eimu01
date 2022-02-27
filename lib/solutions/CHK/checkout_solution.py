@@ -17,7 +17,7 @@ def getPassTests(skus, items):
     
     return passTest
 
-def getSkuCounts(skus)
+def getSkuCounts(skus):
     """Build inventory dictionary"""
     skuCounts = {}
     for sku in items:
@@ -61,13 +61,13 @@ def checkout(skus):
     
     
     # adjust inventory for discounts
-    total = 0
+    discounted = 0
     if 'A' in skuCounts:
-        total +=  multiItems['A'] * (skuCounts['A'] // 3)
+        discounted +=  multiItems['A'] * (skuCounts['A'] // 3)
         skuCounts['A'] = skuCounts['A'] % 3
     
     if 'B' in skuCounts:
-        total += multiItems['B'] * (skuCounts['B'] // 2)
+        discounted += multiItems['B'] * (skuCounts['B'] // 2)
         skuCounts['B'] = skuCounts['B'] % 2
     
     # no discounts total
@@ -78,13 +78,13 @@ def checkout(skus):
     
     
     # finalise total
-    total += noDiscount
+    total = discounted + noDiscount
     
     return total
 
 skus = 'AABCDABCABCDAAABCDE'
+checkout('AABCDABCABCDAAABCDE')
 
-# checkout('AABCDABCABCDAAABCDE')
 items = {
     'A': 50,
     'B': 30,
@@ -106,6 +106,7 @@ if not passTests:
 # build inventory
 skuCounts = getSkuCounts(skus)
 print('skuCounts: %s' % skuCounts)
+
 
 
 
