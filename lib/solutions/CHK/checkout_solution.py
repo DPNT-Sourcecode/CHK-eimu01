@@ -2,6 +2,20 @@
 
 # noinspection PyUnusedLocal
 # skus = unicode string
+
+def passTests(skus, items):
+    passTest = False
+    
+    # check string
+    if not isinstance(skus, str):
+        ret -1
+    
+    # check valid skus
+    if not set(skus).issubset(items):
+        return -1
+    
+    return
+
 def checkout(skus):
     """
     3A 130
@@ -12,17 +26,11 @@ def checkout(skus):
         "B": 30,
         "C": 20,
         "D": 15}
+    
     multiItems = {
             'A': 130,
             'B': 45}
     
-    # check string
-    if not isinstance(skus, str):
-        return -1
-    
-    # check valid skus
-    if not set(skus).issubset(items):
-        return -1
     
     # build inventory
     skuCounts = {}
@@ -48,6 +56,7 @@ def checkout(skus):
     total += noDiscount
     
     return total
+
 
 
 
