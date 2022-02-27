@@ -69,50 +69,33 @@ def getSkuCounts(skus, items):
 
 def adjustForGroupOffers(skuCounts):
     """ X, S, T, Y, Z increasing prices"""
+    decr = ['Z', 'Y', 'T', 'S', 'X'] 
     
-skuCounts = {'Z': 1, 'Y': 1, 'T': 1, 'S': 1, 'X': 1}
-skuCounts
-
-decr = ['Z', 'Y', 'T', 'S', 'X'] 
-
-special = [skuCounts.get(sku, 0) for sku in decr]
-special
-
-groupOffer = 0
-n = sum(special)
-if n >= 3:
-    # group offer price
-    groups = n // 3
-    deduce = groups * 3
-    groupOffer = 45 * groups
+    special = [skuCounts.get(sku, 0) for sku in decr]
     
-    # adjust counts from the most expensive to the least to be nice
-    for sku in decr:
-        print('sku: %s n: %s' % (sku, deduce))
-        skuCount = skuCounts[sku]
+    groupOffer = 0
+    n = sum(special)
+    if n >= 3:
+        # group offer price
+        groups = n // 3
+        deduce = groups * 3
+        groupOffer = 45 * groups
         
-        if deduce > skuCount:
-           deduce -= skuCounts[sku]
-           skuCounts[sku] = 0
-        else:
-           skuCounts[sku] -= deduce
-           deduce = 0
-        print('skuCounts: %s' % skuCounts)
-        
-        if deduce < 1:
-            break
-
-skuCounts
-groupOffer
-
-
-
-
-
-    
-    #[skuCounts.get(sku, 0) for sku in decr]
-    
-    
+        # adjust counts from the most expensive to the least to be nice
+        for sku in decr:
+            print('sku: %s n: %s' % (sku, deduce))
+            skuCount = skuCounts[sku]
+            
+            if deduce > skuCount:
+               deduce -= skuCounts[sku]
+               skuCounts[sku] = 0
+            else:
+               skuCounts[sku] -= deduce
+               deduce = 0
+            print('skuCounts: %s' % skuCounts)
+            
+            if deduce < 1:
+                break
     
     return groupOffer, skuCounts
 
@@ -226,6 +209,43 @@ def checkout(skus):
 #Some requests have failed (1/141). Here are some of them:
 # - {"method":"checkout","params":["UUU"],"id":"CHK_R4_054"}, expected: 120, got: 80
 
+"""
+skuCounts = {'Z': 1, 'Y': 1, 'T': 1, 'S': 1, 'X': 1}
+skuCounts
+
+decr = ['Z', 'Y', 'T', 'S', 'X'] 
+
+special = [skuCounts.get(sku, 0) for sku in decr]
+special
+
+groupOffer = 0
+n = sum(special)
+if n >= 3:
+    # group offer price
+    groups = n // 3
+    deduce = groups * 3
+    groupOffer = 45 * groups
+    
+    # adjust counts from the most expensive to the least to be nice
+    for sku in decr:
+        print('sku: %s n: %s' % (sku, deduce))
+        skuCount = skuCounts[sku]
+        
+        if deduce > skuCount:
+           deduce -= skuCounts[sku]
+           skuCounts[sku] = 0
+        else:
+           skuCounts[sku] -= deduce
+           deduce = 0
+        print('skuCounts: %s' % skuCounts)
+        
+        if deduce < 1:
+            break
+
+skuCounts
+groupOffer
+"""
+
 a = checkout('UUU')
 a
 #----------------
@@ -246,6 +266,7 @@ a
 #----------------
 #a = checkout("FFFFF")
 #a
+
 
 
 
