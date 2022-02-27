@@ -63,7 +63,7 @@ skus = "A"
 skus = "B"
 skus = "AABCDABCABCDAAABCDE"
 
-skus = "A"
+skus = "AABCDABCABCDAAABCDE"
 items = {
     "A": 50,
     "B": 30,
@@ -99,6 +99,7 @@ total
 noDiscount
 total + noDiscount
 """
+
 
 
 
