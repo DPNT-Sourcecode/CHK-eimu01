@@ -91,6 +91,19 @@ def checkout(skus):
 
 
 
+a = checkout('EE')
+a
+#----------------
+a = checkout("EEB")
+a
+#----------------
+a = checkout("EEEB")
+a
+#----------------
+
+
+
+
 
 
 

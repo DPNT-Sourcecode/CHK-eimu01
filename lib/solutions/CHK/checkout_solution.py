@@ -90,6 +90,22 @@ def checkout(skus):
     return total
 
 
+# - {"method":"checkout","params":["EE"],"id":"CHK_R2_023"}, expected: 80, got: 120
+# - {"method":"checkout","params":["EEB"],"id":"CHK_R2_024"}, expected: 80, got: 150
+# - {"method":"checkout","params":["EEEB"],"id":"CHK_R2_025"}, expected: 120, got: 190
+
+a = checkout('EE')
+a
+#----------------
+a = checkout("EEB")
+a
+#----------------
+a = checkout("EEEB")
+a
+#----------------
+
+
+
 
 
 
