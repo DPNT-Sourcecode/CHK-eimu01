@@ -69,11 +69,13 @@ def getSkuCounts(skus, items):
 
 def adjustForGroupOffers(skuCounts):
     """ X, S, T, Y, Z increasing prices"""
+    decr = ['Z', 'Y', 'T', 'S', 'X'] 
+    
     
 skuCounts = {'S': 1, 'T': 1, 'X': 1, 'Y': 1, 'Z': 1}
 skuCounts
 
-special = [skuCounts.get(sku, 0) for sku in ['S', 'T', 'X', 'Y', 'Z']]
+special = [skuCounts.get(sku, 0) for sku in decr]
 special
 
 n = sum(special)
@@ -82,8 +84,12 @@ if n >= 3:
     groupOffer = 45 * (n // 3)
     
     # adjust counts from the most expensive to the least to be nice
-    skuCounts
+    for sku in decr:
+        skuCounts[sku]
     
+    
+    
+    #[skuCounts.get(sku, 0) for sku in decr]
     
     
     
@@ -219,13 +225,4 @@ a
 #----------------
 #a = checkout("FFFFF")
 #a
-
-
-
-
-
-
-
-
-
 
