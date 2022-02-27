@@ -34,18 +34,28 @@ def checkout(skus):
     if 'A' in skuCounts:
         total +=  multiItems['A'] * (skuCounts['A'] // 3)
         skuCounts['A'] = skuCounts['A'] % 3
-
+    
     if 'B' in skuCounts:
         total += multiItems['B'] * (skuCounts['B'] // 2)
         skuCounts['B'] = skuCounts['B'] % 2
     
-    # finalise total
+    # no discounts total
+    noDiscount = 0
+    for sku, count in skuCounts.items():
+        noDiscount += skuCounts[sku] * items[sku]
     
+    # finalise total
+    total += noDiscount
     
     return total
 
 
+
+
+"""
 skus = "AABCDABCABCDAAABCDE"
+checkout("AABCDABCABCDAAABCDE")
+
 
 items = {
     "A": 50,
@@ -76,13 +86,4 @@ if 'B' in skuCounts:
 noDiscount = 0
 for sku, count in skuCounts.items():
     noDiscount += skuCounts[sku] * items[sku]
-
-
-
-
-
-
-
-
-
-
+"""
