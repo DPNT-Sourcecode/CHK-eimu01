@@ -29,7 +29,7 @@ def checkout(skus):
     for sku in items:
         skuCounts[sku] = list(skus).count(sku)
     
-    # adjust inventory for disounts
+    # adjust inventory for discounts
     if 'A' in 
     
     
@@ -57,11 +57,12 @@ skuCounts
 
 total = 0
 if 'A' in skuCounts:
+    total = total + (multiItems['A'] * (skuCounts['A'] // 3))
     skuCounts['A'] = skuCounts['A'] % 3
-    total = total + skuCounts['A'] // 3
 elif 'B' in skuCounts:
+    total = total + skuCounts['B'] // 2
     skuCounts['B'] = skuCounts['B'] % 2
-    total = skuCounts['B'] // 2
+
 
 
 
