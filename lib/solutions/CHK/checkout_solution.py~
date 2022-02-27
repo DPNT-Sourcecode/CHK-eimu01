@@ -82,22 +82,24 @@ groupOffer = 0
 n = sum(special)
 if n >= 3:
     # group offer price
-    groupOffer = 45 * (n // 3)
+    groups = n // 3
+    deduce = groups * 3
+    groupOffer = 45 * groups
     
     # adjust counts from the most expensive to the least to be nice
     for sku in decr:
-        print('sku: %s n: %s' % (sku, str(n)))
+        print('sku: %s n: %s' % (sku, deduce))
         skuCount = skuCounts[sku]
         
-        if n > skuCount:
-           n -= skuCounts[sku]
+        if deduce > skuCount:
+           deduce -= skuCounts[sku]
            skuCounts[sku] = 0
         else:
-           skuCounts[sku] -= n
-           n = 0
+           skuCounts[sku] -= deduce
+           deduce = 0
         print('skuCounts: %s' % skuCounts)
         
-        if n < 1:
+        if deduce < 1:
             break
 
 skuCounts
@@ -244,6 +246,7 @@ a
 #----------------
 #a = checkout("FFFFF")
 #a
+
 
 
 
