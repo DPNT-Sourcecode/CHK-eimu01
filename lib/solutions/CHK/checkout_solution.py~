@@ -137,8 +137,8 @@ def checkout(skus):
     print('R skuCounts: %s' % skuCounts)
     
     if 'U' in skuCounts:  # 3U get one U free
-        if skuCounts['U'] >= 3:
-            offers = skuCounts['U'] // 3
+        if skuCounts['U'] >= 4:
+            offers = skuCounts['U'] // 4
             if offers > 0:
                 skuCounts['U'] -= offers
                 if skuCounts['U'] < 0:
@@ -182,6 +182,7 @@ def checkout(skus):
 #----------------
 #a = checkout("FFFFF")
 #a
+
 
 
 

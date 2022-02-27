@@ -137,8 +137,8 @@ def checkout(skus):
     print('R skuCounts: %s' % skuCounts)
     
     if 'U' in skuCounts:  # 3U get one U free
-        if skuCounts['U'] >= 3:
-            offers = skuCounts['U'] // 3
+        if skuCounts['U'] >= 4:
+            offers = skuCounts['U'] // 4
             if offers > 0:
                 skuCounts['U'] -= offers
                 if skuCounts['U'] < 0:
@@ -162,8 +162,8 @@ def checkout(skus):
 #Some requests have failed (1/141). Here are some of them:
 # - {"method":"checkout","params":["UUU"],"id":"CHK_R4_054"}, expected: 120, got: 80
 
-a = checkout('UUU')
-a
+#a = checkout('UUU')
+#a
 #----------------
 #a = checkout("EEB")
 #a
@@ -182,6 +182,7 @@ a
 #----------------
 #a = checkout("FFFFF")
 #a
+
 
 
 
