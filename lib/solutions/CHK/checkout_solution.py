@@ -14,6 +14,8 @@ def checkout(skus):
         "C": 20,
         "D": 15}
     
+    
+    
     nSkus = len(skus)
     
     for sku in ['A', 'B', 'C', 'D']:
@@ -21,6 +23,26 @@ def checkout(skus):
     
     
     return out
+
+
+skus = "ABCDABCABCDAAABCDE"
+
+items = {
+    "A": 50,
+    "B": 30,
+    "C": 20,
+    "D": 15}
+
+
+
+nSkus = len(skus)
+
+skuCounts = {}
+for sku in ['A', 'B', 'C', 'D']:
+    skuCounts[sku] = list(skus).count(sku)
+
+sum(skuCounts.values())
+
 
 
 
