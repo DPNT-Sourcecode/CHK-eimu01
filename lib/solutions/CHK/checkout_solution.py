@@ -20,14 +20,14 @@ def checkout(skus):
     if not isinstance(skus, str):
         return -1
     
-    # check valid skus
-    if set(skus) != set(items):
-        return -1
-    
     # build inventory
     skuCounts = {}
     for sku in items:
         skuCounts[sku] = list(skus).count(sku)
+    
+        # check valid skus
+    if set(skus) != set(items) and len(skus) != 0:
+        return -1
     
     # adjust inventory for discounts
     total = 0
@@ -63,6 +63,7 @@ skus = "A"
 skus = "B"
 skus = "AABCDABCABCDAAABCDE"
 
+skus = "A"
 items = {
     "A": 50,
     "B": 30,
@@ -92,5 +93,11 @@ if 'B' in skuCounts:
 noDiscount = 0
 for sku, count in skuCounts.items():
     noDiscount += skuCounts[sku] * items[sku]
+
+
+total
+noDiscount
+total + noDiscount
 """
+
 
