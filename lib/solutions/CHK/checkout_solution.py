@@ -62,18 +62,25 @@ def checkout(skus):
     # adjust inventory for discounts
     discounted = 0
     
-    if 'A' in skuCounts:
-        offers= multiItems['A']
-        print('offers: %s' % offers)
-        for i in range(len(offers)):
-            print('i: %s' % i)
-            n = len(offers) - i
-            pos = n - 1
-            if multiItems['A'][pos] > 0:
-                discounted += multiItems['A'][pos] * (skuCounts['A'] // n)
-                print('discounted: %s' % discounted)
-                skuCounts['A'] = skuCounts['A'] % n
-                print('skuCounts: %s' % skuCounts)
+    for item in multiItems:
+        print('item: %s' % item)
+        if item in skuCounts:
+            offers= multiItems[item]
+            print('offers: %s' % offers)
+            for i in range(len(offers)):
+                print('i: %s' % i)
+                n = len(offers) - i
+                pos = n - 1
+                if multiItems[item][pos] > 0:
+                    discounted += multiItems[item][pos] * (skuCounts[item] // n)
+                    print('discounted: %s' % discounted)
+                    skuCounts['A'] = skuCounts[item] % n
+                    print('skuCounts: %s' % skuCounts)
+    
+    return 'done'
+    
+    
+    
     
     
     if 'B' in skuCounts:
@@ -92,7 +99,8 @@ def checkout(skus):
     
     return total
 
-checkout('AABCDABCABCDAAABCDEEE')
+checkout('AABCDABCABCDAAAAABCDEEE')
+
 
 
 
