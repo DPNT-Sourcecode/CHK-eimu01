@@ -55,6 +55,7 @@ def checkout(skus):
     
     # build inventory
     skuCounts = getSkuCounts(skus)
+    print('skuCounts: %s' % skuCounts)
     
     
     
@@ -74,9 +75,15 @@ def checkout(skus):
     noDiscount = 0
     for sku, count in skuCounts.items():
         noDiscount += skuCounts[sku] * items[sku]
+    print('noDiscount: %s' % noDiscount)
+    
     
     # finalise total
     total += noDiscount
     
     return total
+
+
+checkout("AABCDABCABCDAAABCD")
+
 
