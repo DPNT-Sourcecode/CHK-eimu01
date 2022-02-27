@@ -19,14 +19,21 @@ def checkout(skus):
     # check string
     if not isinstance(skus, str):
         return -1
-
+    
+    # check valid skus
+    if not isinstance(skus, str):
+        return -1
     
     
-    
-    nSkus = len(skus)
-    
-    for sku in ['A', 'B', 'C', 'D']:
+    skuCounts = {}
+    for sku in items:
         skuCounts[sku] = list(skus).count(sku)
+
+    total = sum(skuCounts.values())
+
+    nSkus = len(skus)
+    if nSkus != total:
+        return -1
     
     
     return ret
@@ -40,19 +47,18 @@ items = {
     "C": 20,
     "D": 15}
 
-
 nSkus = len(skus)
 
 skuCounts = {}
-for sku in ['A', 'B', 'C', 'D']:
+for sku in items:
     skuCounts[sku] = list(skus).count(sku)
 
 total = sum(skuCounts.values())
-
 
 if nSkus != total:
     return -1
 
 
 {'A': 6, 'B': 4, 'C': 4, 'D': 3}
+
 
