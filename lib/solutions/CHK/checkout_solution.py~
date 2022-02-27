@@ -63,11 +63,12 @@ def checkout(skus):
     print('skuCounts: %s' % skuCounts)
     
     if 'F' in skuCounts:
-        offers = skuCounts['F'] // 2
-        if offers > 0:
-            skuCounts['F'] -= offers
-            if skuCounts['F'] < 0:
-                skuCounts['F'] = 0
+        if skuCounts['F'] > 3:
+            offers = skuCounts['F'] // 2
+            if offers > 0:
+                skuCounts['F'] -= offers
+                if skuCounts['F'] < 0:
+                    skuCounts['F'] = 0
     print('skuCounts: %s' % skuCounts)
     
     # adjust inventory for discounts
@@ -115,6 +116,15 @@ def checkout(skus):
 #a = checkout("EEEB")
 #a
 #----------------
+#a = checkout("F")
+#a
+#----------------
+#a = checkout("FF")
+#a
+#----------------
+#a = checkout("FFF")
+#a
+
 
 
 

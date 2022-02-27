@@ -116,6 +116,18 @@ def checkout(skus):
 #a = checkout("EEEB")
 #a
 #----------------
+#a = checkout("F")
+#a
+#----------------
+a = checkout("FF")
+a
+#----------------
+#a = checkout("FFF")
+#a
+#----------------
+#a = checkout("FFFFF")
+#a
+
 
 
 
