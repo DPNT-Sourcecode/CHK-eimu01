@@ -44,9 +44,6 @@ def checkout(skus):
             'A': 130,
             'B': 45}
     
-    
-    
-    
     # check input integrity
     passTests = getPassTests(skus, items)
     if not passTests:
@@ -56,9 +53,10 @@ def checkout(skus):
     skuCounts = getSkuCounts(skus, items)
     print('skuCounts: %s' % skuCounts)
     
-    
-    
-    # adjust inventory for free items
+    # calculate free items value
+    free = 0
+    if 'E' in skuCounts:
+        items['E'] * (skuCounts['E'] // 2)
     
     
     # adjust inventory for discounts
@@ -77,13 +75,13 @@ def checkout(skus):
         noDiscount += skuCounts[sku] * items[sku]
     print('noDiscount: %s' % noDiscount)
     
-    
     # finalise total
-    total = discounted + noDiscount
+    total = discounted + noDiscount + free
     
     return total
 
 checkout('AABCDABCABCDAAABCDE')
+
 
 
 
