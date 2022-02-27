@@ -8,29 +8,39 @@ def passTests(skus, items):
     
     # check string
     if not isinstance(skus, str):
-        ret -1
+        passTest = False
     
     # check valid skus
     if not set(skus).issubset(items):
-        return -1
+        passTest = False
     
-    return
+    return passTest
 
 def checkout(skus):
     """
-    3A 130
-    2B 45
+    3A = 130
+    5A = 200
+    2B = 45
+    2E = extra B
     """
     items = {
-        "A": 50,
-        "B": 30,
-        "C": 20,
-        "D": 15}
+        'A': 50,
+        'B': 30,
+        'C': 20,
+        'D': 15,
+        'E': 40}
     
     multiItems = {
             'A': 130,
             'B': 45}
     
+    
+    
+    
+    
+    
+    if not passTests:
+        return -1
     
     # build inventory
     skuCounts = {}
@@ -56,6 +66,7 @@ def checkout(skus):
     total += noDiscount
     
     return total
+
 
 
 
