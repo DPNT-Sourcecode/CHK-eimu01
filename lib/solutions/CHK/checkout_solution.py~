@@ -8,6 +8,8 @@ def checkout(skus):
     2B 45
     """
     
+    
+    
     items = {
         "A": 50,
         "B": 30,
@@ -19,4 +21,3 @@ def checkout(skus):
     
     
     return out
-
