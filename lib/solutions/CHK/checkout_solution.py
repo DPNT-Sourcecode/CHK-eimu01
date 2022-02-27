@@ -40,7 +40,7 @@ def checkout(skus):
         'E': 40}
     
     multiItems = {
-            'A': [0, 0, 130, 0, 2000],
+            'A': [0, 0, 130, 0, 200],
             'B': [0, 45]}
     
     # check input integrity
@@ -62,19 +62,19 @@ def checkout(skus):
     discounted = 0
     
     for sku in multiItems:
-#        print('sku: %s' % sku)
+        print('sku: %s' % sku)
         if sku in skuCounts:
             offers= multiItems[sku]
-#            print('offers: %s' % offers)
+            print('offers: %s' % offers)
             for i in range(len(offers)):
-#                print('i: %s' % i)
+                print('i: %s' % i)
                 n = len(offers) - i
                 pos = n - 1
                 if multiItems[sku][pos] > 0:
                     discounted += multiItems[sku][pos] * (skuCounts[sku] // n)
-#                    print('discounted: %s' % discounted)
+                    print('discounted: %s' % discounted)
                     skuCounts[sku] = skuCounts[sku] % n
-#                    print('skuCounts: %s' % skuCounts)
+                    print('skuCounts: %s' % skuCounts)
     
 #    return 'done'
     
@@ -90,7 +90,15 @@ def checkout(skus):
     
     return total
 
+# - {"method":"checkout","params":["AAAAA"],"id":"CHK_R2_017"}, expected: 200, got: 2000
+# - {"method":"checkout","params":["AAAAAA"],"id":"CHK_R2_018"}, expected: 250, got: 2050
+# - {"method":"checkout","params":["AAAAAAA"],"id":"CHK_R2_019"}, expected: 300, got: 2100
+
+a = checkout('AAAAA')
+a
+
 #checkout('AABCDABCABCDAAAAABCDEEE')
+
 
 
 
