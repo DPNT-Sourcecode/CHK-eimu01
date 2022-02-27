@@ -78,6 +78,7 @@ skuCounts
 special = [skuCounts.get(sku, 0) for sku in decr]
 special
 
+groupOffer = 0
 n = sum(special)
 if n >= 3:
     # group offer price
@@ -85,13 +86,18 @@ if n >= 3:
     
     # adjust counts from the most expensive to the least to be nice
     for sku in decr:
-        count = skuCounts[sku]
-        skuCounts[sku] -= n
+        skuCount = skuCounts[sku]
+        if skuCount > n:
+           skuCounts[sku] -= n
+           n = 0
+        else:
+            
         
         if skuCounts[sku] < 0:
             skuCounts[sku] = 0
         
-        n -= skuCounts[sku]
+        if n == 0:
+            
         
     
     
@@ -231,5 +237,6 @@ a
 #----------------
 #a = checkout("FFFFF")
 #a
+
 
 
